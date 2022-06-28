@@ -1,0 +1,112 @@
+﻿@using Nhom2_WebsiteBanXe.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<Nhom2_WebsiteBanXe.Models.Xe>
+
+@helper Truncate(string input, int length)
+{
+    if(input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0,length)<textarea>...</textarea>
+    }
+}
+
+@{
+    ViewBag.Title = "Xe";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ THÔNG TIN SẢN PHẨM</h2>
+
+<p>
+    @Html.ActionLink("THÊM MỚI", "ThemXeMoi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên loại
+        </th>
+        <th>
+            Tên hãng
+        </th>
+        <th>
+            Tên xe
+        </th>
+        <th>
+            Giá tiền
+        </th>
+        <th>
+            Hình ảnh
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+            Năm sản xuất
+        </th>
+        <th>
+            Tình trạng xe
+        </th>
+        <th>
+            Ngày nhập
+        </th>
+        <th>
+            Số lượng tồn
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiXe.TenLoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HangXe.TenHangXe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenXe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaTien)
+        </td>
+        <td>
+            <img src="@Url.Content("~/HinhSP/"+ item.Anhbia)"/>
+        </td>
+        <td>
+            @Truncate(item.NoiDung,100)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NamSanXuat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinhTrangXe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayNhap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuongTon)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "EditXe", new { id=item.idXe }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.idXe }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.idXe })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div style="text-align:center">
+    <div>
+        @*Tạo liên kết các trang*@
+        Trang @(Model.PageNumber>Model.PageCount?10:Model.PageNumber) /@Model.PageCount
+    </div>
+    <div class="Menutrang">
+        @Html.PagedListPager(Model, page => Url.Action("Xe", new { page = page }))
+    </div>
+</div>

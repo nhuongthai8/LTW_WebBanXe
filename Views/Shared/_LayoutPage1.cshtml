@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/LTW.css">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="~/Content/assets/images/icons/favicon.ico" />
+    <title>Website Bán Xe - AroundTheClock</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background-color: whitesmoke">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("AroundTheClock", "Index", "CarStore", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Giới Thiệu", "About", "CarStore")</li>
+                    <li>@Html.ActionLink("Liên Hệ", "Contact", "CarStore")</li>
+                    <li>@Html.ActionLink("Tin Tức", "Index", "TinTuc")</li>
+                    <li>@Html.ActionLink("Sản Phẩm", "Sanpham", "CarStore")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.Action("GioHangPartial", "GioHang")</li>
+                    <li>@Html.ActionLink("Đăng Nhập", "Dangnhap", "KhachHang")</li>
+                    <li>@Html.ActionLink("Đăng Ký", "Dangky", "KhachHang")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <br />
+                <p class="lead">CÁC LOẠI XE</p>
+                @Html.Action("Cacloaixe", "CarStore")
+                <br />
+                <p class="lead">HÃNG XE</p>
+                @Html.Action("Hangxe", "CarStore")
+            </div>
+            <div class="col-md-9">
+                <div class="row carousel-holder">
+                    <div class="col-md-12">
+                        <br />
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img class="slide-image" src="~/Content/images/banner1.jpg" alt="">
+
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="~/Content/images/banner2.jpg" alt="">
+
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="~/Content/images/banner3.jpg" alt="">
+
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+                    @RenderBody()
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container body-content">
+        <hr />
+        <footer>
+
+            <p>&copy; @DateTime.Now.Year - ASP.NET Application - Nhóm 2</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>

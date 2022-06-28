@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Nhom2_WebsiteBanXe.Models.Xe>
+@{
+    ViewBag.Title = "SpTheoHang";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h3 style="text-align:center">CÁC LOẠI XE CỦA HÃNG</h3>
+<div class="row">
+    @foreach (var hx in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <a href="@Url.Action("Details","CarStore",new { id = hx.idXe})">
+                    <img alt="@hx.TenXe" src="~/HinhSP/@hx.Anhbia" style="width:200px" />
+                    <div>
+                        <br />
+                        <h4 style="text-align:center">
+                            @hx.TenXe
+                        </h4>
+                        <p></p>
+                    </div>
+                </a>
+                <div class="ratings">
+                    <p class="pull-right">
+                        <div id="Datmua">
+                            <a href="@Url.Action("AddToCard","ShoppingCard", new { id = hx.idXe})" class="list-group-item">
+                                ĐẶT HÀNG
+                            </a>
+                        </div>
+                    </p>
+                    <p style="color: orange">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </p>
+                    <p>
+                        <span class="glyphicon glyphicon-tag" style="text-indent: 5px"></span> @hx.GiaTien VNĐ
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

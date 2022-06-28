@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WebBanXe" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=MSI\SQLEXPRESS;Initial Catalog=WebBanXe;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="WebBanXeConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="tkAdmin" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="passAdmin" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Xe" Member="Xes">
+    <Type Name="Xe">
+      <Column Name="idXe" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idLoaiXe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idHangXe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TenXe" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GiaTien" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Anhbia" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NamSanXuat" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="TinhTrangXe" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="NgayNhap" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SoLuongTon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Xe_ChiTietOrder" Member="ChiTietOrders" ThisKey="idXe" OtherKey="idXe" Type="ChiTietOrder" />
+      <Association Name="HangXe_Xe" Member="HangXe" ThisKey="idHangXe" OtherKey="idHangXe" Type="HangXe" IsForeignKey="true" />
+      <Association Name="LoaiXe_Xe" Member="LoaiXe" ThisKey="idLoaiXe" OtherKey="idLoaiXe" Type="LoaiXe" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChiTietOrders" Member="ChiTietOrders">
+    <Type Name="ChiTietOrder">
+      <Column Name="idXe" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaOrder" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="Xe_ChiTietOrder" Member="Xe" ThisKey="idXe" OtherKey="idXe" Type="Xe" IsForeignKey="true" />
+      <Association Name="Order_ChiTietOrder" Member="Order" ThisKey="MaOrder" OtherKey="MaOrder" Type="Order" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HangXe" Member="HangXes">
+    <Type Name="HangXe">
+      <Column Name="idHangXe" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenHangXe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="NamThanhLap" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="eMail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="HangXe_Xe" Member="Xes" ThisKey="idHangXe" OtherKey="idHangXe" Type="Xe" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhachHang" Member="KhachHangs">
+    <Type Name="KhachHang">
+      <Column Name="MaKH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="eMail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TaiKhoan" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="KhachHang_Order" Member="Orders" ThisKey="MaKH" OtherKey="MaKH" Type="Order" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoaiXe" Member="LoaiXes">
+    <Type Name="LoaiXe">
+      <Column Name="idLoaiXe" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenLoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="LoaiXe_Xe" Member="Xes" ThisKey="idLoaiXe" OtherKey="idLoaiXe" Type="Xe" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Orders" Member="Orders">
+    <Type Name="Order">
+      <Column Name="MaOrder" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaKH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgayTao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayGiao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TinhTrangThanhToan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TinhTrangGH" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Order_ChiTietOrder" Member="ChiTietOrders" ThisKey="MaOrder" OtherKey="MaOrder" Type="ChiTietOrder" />
+      <Association Name="KhachHang_Order" Member="KhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="KhachHang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TheLoaiTin" Member="TheLoaiTins">
+    <Type Name="TheLoaiTin">
+      <Column Name="idLoai" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenLoai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="TheLoaiTin_TinTuc" Member="TinTucs" ThisKey="idLoai" OtherKey="idLoai" Type="TinTuc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TinTuc" Member="TinTucs">
+    <Type Name="TinTuc">
+      <Column Name="idTT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idLoai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TieuDe" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="TheLoaiTin_TinTuc" Member="TheLoaiTin" ThisKey="idLoai" OtherKey="idLoai" Type="TheLoaiTin" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,57 @@
+﻿body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 70px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.top-index {
+    background-color: whitesmoke;
+}
+
+
+.list-sp {
+    background-color: cadetblue;
+    border: 1px solid red;
+    border-radius: 5px;
+    height: 190px;
+    width: 20%;
+}
+
+#imgBanner {
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+
+footer {
+    margin: 50px 0;
+}
+
+
+
+#Datmua a {
+    clear: both;
+    background-color: orangered;
+    color: whitesmoke;
+    width: 120px;
+    height: 40px;
+    display: block;
+    float: right;
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    #Datmua a:hover {
+        background-color: gainsboro;
+        color: red;
+    }
+
+.Menutrang li {
+    display: inline
+}
+

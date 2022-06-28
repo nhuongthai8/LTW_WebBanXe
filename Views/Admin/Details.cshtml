@@ -1,0 +1,98 @@
+﻿@model Nhom2_WebsiteBanXe.Models.Xe
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHI TIẾT SẢN PHẨM</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Loại xe: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiXe.TenLoai)
+        </dd>
+
+        <dt>
+            Hãng xe: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HangXe.TenHangXe)
+        </dd>
+
+        <dt>
+            Tên xe: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenXe)
+        </dd>
+
+        <dt>
+            Giá bán: 
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}",Model.GiaTien) USD
+        </dd>
+
+        <dt>
+            Hình ảnh 
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/HinhSP/"+ Model.Anhbia)" width="120px"/>
+        </dd>
+
+        <dt>
+            Mô tả: 
+        </dt>
+
+        <dd style="width:600px;text-align:justify">
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            Năm sản xuất: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamSanXuat)
+        </dd>
+
+        <dt>
+            Tình trạng xe: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangXe)
+        </dd>
+
+        <dt>
+            Ngày nhập: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayNhap)
+        </dd>
+
+        <dt>
+            Số lượng tồn: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongTon)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("CHỈNH SỬA", "EditXe", new { id = Model.idXe }) |
+    @Html.ActionLink("TRỞ VỀ TRANG QUẢN LÝ XE", "Xe")
+</p>

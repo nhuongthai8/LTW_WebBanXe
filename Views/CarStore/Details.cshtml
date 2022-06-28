@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>THÔNG TIN CHI TIẾT</h2>
+<div>
+    <div style="width:40%; float:left; border-left:dotted 1px;border-color:azure">
+        <img src="~/HinhSP/@Model.Anhbia" style="width:100%" />
+    </div>
+    <div style="width:60%; float:left; padding:10px">
+        <h4 style="font-weight:bold">Tên xe: <span style="color:red">@Model.TenXe</span></h4>
+        <p style="text-align:justify"><span style="font-weight:bold">Mô tả: </span>@Model.NoiDung</p>
+        <p style="text-align:justify"><span style="font-weight:bold">Năm sản xuất: </span>@Model.NamSanXuat</p>
+        <p style="text-align:justify"><span style="font-weight:bold">Hãng xe: </span>@Model.HangXe.TenHangXe</p>
+        <p style="text-align:justify"><span style="font-weight:bold">Xuất xứ: </span>@Model.HangXe.DiaChi</p>
+        <p style="text-align:justify"><span style="font-weight:bold">Loại xe: </span>@Model.LoaiXe.TenLoai</p>
+        <p style="text-align:justify"><span style="font-weight:bold">Tình trạng xe: </span>@Model.TinhTrangXe</p>
+        <p style="text-align:justify"><span style="font-weight:bold">Tồn kho: </span>@Model.SoLuongTon</p>
+        <p style="text-align:justify"><span style="font-weight:bold">Ngày nhập: </span>@Model.NgayNhap</p>
+        <p style="font-weight: bold">Giá bán: <span style="color:red; font-size:16pt"> @Model.GiaTien USD</span></p>
+    </div>
+    <div>
+        <div id="Datmua">
+            <a href="@Url.Action("Themgiohang","GioHang", new { @iMaxe= @Model.idXe, @strURL= Request.Url.ToString()})" class="list-group-item" style="float:right">
+                ĐẶT HÀNG
+            </a>
+        </div>
+    </div>
+</div>
+

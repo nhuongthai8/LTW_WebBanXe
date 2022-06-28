@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Nhom2_WebsiteBanXe.Models.Xe>
+@{
+    ViewBag.Title = "SpTheoLoai";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<link href="~/Content/LTW.css" rel="stylesheet" />
+
+<h3 style="text-align:center">XE THEO LOẠI</h3>
+<div class="row">
+    @foreach (var xe in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <a href="@Url.Action("Details","CarStore",new { id = xe.idXe})">
+                    <img alt="@xe.TenXe" src="~/HinhSP/@xe.Anhbia" style="width:200px" />
+                    <div>
+                        <br />
+                        <h4 style="text-align:center">
+                            @xe.TenXe
+                        </h4>
+                        <p></p>
+                    </div>
+                </a>
+                <div class="ratings">
+                    <p class="pull-right">
+                        <div id="Datmua">
+                            <a href="@Url.Action("AddToCard","ShoppingCard", new { id = xe.idXe})" class="list-group-item">
+                                ĐẶT HÀNG
+                            </a>
+                        </div>
+                    </p>
+                    <p style="color: orange">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                    </p>
+                    <p>
+                        <span class="glyphicon glyphicon-tag" style="text-indent: 5px"></span> @xe.GiaTien VNĐ
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

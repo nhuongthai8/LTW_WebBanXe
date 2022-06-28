@@ -1,0 +1,69 @@
+﻿@model PagedList.PagedList<Xe>
+@using PagedList.Mvc;
+@using Nhom2_WebsiteBanXe.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>TOP 3 XE GIÁ CAO NHẤT</h2>
+<div>
+    @Html.Action("Laygiacao", "CarStore")
+</div>
+
+<h2>XE TỒN KHO NHIỀU</h2>
+<div>
+    @Html.Action("Xetonkho", "CarStore")
+</div>
+
+<h2>XE MỚI CẬP NHẬT</h2>
+@foreach (var xe in Model)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("Details","CarStore",new { id = xe.idXe})">
+                <img alt="@xe.TenXe" src="~/HinhSP/@xe.Anhbia" style="width:200px" />
+                <div>
+                    <br />
+                    <h4 style="text-align:center">
+                        @xe.TenXe
+                    </h4>
+                    <p></p>
+                </div>
+
+            </a>
+            <div class="ratings">
+                <p class="pull-right">
+                    <span class="glyphicon glyphicon-heart" style="color: red"></span> @xe.TinhTrangXe
+                </p>
+                <p class="pull-right">
+                    <span class="glyphicon glyphicon-folder-close" style="color: orange"></span> @xe.SoLuongTon
+                </p>
+                <p>
+                    <span class="glyphicon glyphicon-tag" style="text-indent: 5px; color: red"></span> @xe.GiaTien USD
+                </p>
+                <p>
+                    <span class="glyphicon glyphicon-calendar" style="text-indent: 5px; color: orange"></span> @xe.NamSanXuat
+                </p>
+            </div>
+        </div>
+    </div>
+}
+<div style="text-align:center">
+    <div>
+        @*Tạo liên kết các trang*@
+        Trang @(Model.PageNumber>Model.PageCount?3:Model.PageNumber) /@Model.PageCount
+    </div>
+    <div class="Menutrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
