@@ -1,0 +1,32 @@
+﻿@model Nhom2_WebsiteBanXe.Models.LoaiXe
+
+@{
+    ViewBag.Title = "XoaLX";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">XÓA LOẠI XE</h2>
+
+<h3>Bạn có muốn xóa loại xe này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên loại xe:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("TRỞ VỀ DANH SÁCH", "LoaiXe")
+        </div>
+    }
+</div>

@@ -1,0 +1,65 @@
+﻿@model Nhom2_WebsiteBanXe.Models.HangXe
+
+@{
+    ViewBag.Title = "ChiTietHX";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">XEM CHI TIẾT HÃNG XE</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã hãng xe:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idHangXe)
+        </dd>
+        <dt>
+            Tên hãng xe:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenHangXe)
+        </dd>
+
+        <dt>
+            SĐT:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            Năm thành lập:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamThanhLap)
+        </dd>
+
+        <dt>
+            Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            eMail:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eMail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "SuaHX", new { id = Model.idHangXe }) |
+    @Html.ActionLink("Trở về", "HangXe")
+</p>

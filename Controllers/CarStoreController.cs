@@ -19,7 +19,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
         }
         public ActionResult Index(int? page)
         {
-            int pageSize = 6; //số xe mới cập nhật hiện lên trang index
+            int pageSize = 9; //số xe mới cập nhật hiện lên trang index
             int pageNum = (page ?? 1); //tạo biến số trang
 
             var xemoi = Layxemoi(12); //tổng số xe hiện lên trong phần chia trang
@@ -29,36 +29,13 @@ namespace Nhom2_WebsiteBanXe.Controllers
         //lấy tất cả xe trong table       
         public ActionResult Sanpham(int? page)
         {
-            int pageSize = 6;
+            int pageSize = 9;
             int pageNum = (page ?? 1);
 
             var xe = (from s in data.Xes select s).ToList();
             return View(xe.ToPagedList(pageNum, pageSize));
         }
         //
-
-        private List<Xe> Topgia(int count)
-        {
-            //sắp xếp xe cập nhật theo gia cao nhat top 3
-            return data.Xes.OrderByDescending(a => a.GiaTien).Take(count).ToList();
-        }
-
-        public ActionResult Laygiacao()
-        {
-            var giacao = Topgia(3);
-            return PartialView(giacao);
-        }
-
-        private List<Xe> Tonkho(int count)
-        {
-            return data.Xes.OrderByDescending(a => a.SoLuongTon > 2).Take(count).ToList();
-        }
-
-        public ActionResult Xetonkho()
-        {
-            var tonkho = Tonkho(3);
-            return PartialView(tonkho);
-        }
 
 
 

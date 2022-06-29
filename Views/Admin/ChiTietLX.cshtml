@@ -1,0 +1,33 @@
+﻿@model Nhom2_WebsiteBanXe.Models.LoaiXe
+
+@{
+    ViewBag.Title = "ChiTietLX";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>XEM CHI TẾT LOẠI XE</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idLoaiXe)
+        </dd>
+        <dt>
+            Tên loại xe:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "SuaLX", new { id = Model.idLoaiXe }) |
+    @Html.ActionLink("Trở về", "LoaiXe")
+</p>

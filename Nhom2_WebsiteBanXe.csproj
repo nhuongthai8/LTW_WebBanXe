@@ -142,6 +142,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\MaHoa.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -224,6 +225,35 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\structure.css" />
+    <Content Include="Content\TrangChu\css\animate.min.css" />
+    <Content Include="Content\TrangChu\css\bootstrap.min.css" />
+    <Content Include="Content\TrangChu\css\jquery-ui.css" />
+    <Content Include="Content\TrangChu\css\jquery.mCustomScrollbar.min.css" />
+    <Content Include="Content\TrangChu\css\meanmenu.css" />
+    <Content Include="Content\TrangChu\css\nice-select.css" />
+    <Content Include="Content\TrangChu\css\normalize.css" />
+    <Content Include="Content\TrangChu\css\owl.carousel.min.css" />
+    <Content Include="Content\TrangChu\css\responsive.css" />
+    <Content Include="Content\TrangChu\css\slick.css" />
+    <Content Include="Content\TrangChu\css\style.css" />
+    <Content Include="Content\TrangChu\images\banner.jpg" />
+    <Content Include="Content\TrangChu\images\bg.jpg" />
+    <Content Include="Content\TrangChu\images\car_img1.png" />
+    <Content Include="Content\TrangChu\images\car_img2.png" />
+    <Content Include="Content\TrangChu\images\car_img3.png" />
+    <Content Include="Content\TrangChu\images\cross_img.png" />
+    <Content Include="Content\TrangChu\images\loading.gif" />
+    <Content Include="Content\TrangChu\images\logo.png" />
+    <Content Include="Content\TrangChu\images\menu_icon.png" />
+    <Content Include="Content\TrangChu\images\te1.png" />
+    <Content Include="Content\TrangChu\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\TrangChu\js\custom.js" />
+    <Content Include="Content\TrangChu\js\jquery-3.0.0.min.js" />
+    <Content Include="Content\TrangChu\js\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Content\TrangChu\js\jquery.min.js" />
+    <Content Include="Content\TrangChu\js\jquery.validate.js" />
+    <Content Include="Content\TrangChu\js\plugin.js" />
+    <Content Include="Content\TrangChu\js\popper.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -489,8 +519,6 @@
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\CarStore\Cacloaixe.cshtml" />
     <Content Include="Views\CarStore\Hangxe.cshtml" />
-    <Content Include="Views\CarStore\Laygiacao.cshtml" />
-    <Content Include="Views\CarStore\Index.cshtml" />
     <Content Include="Views\CarStore\Details.cshtml" />
     <Content Include="Views\CarStore\SpTheoLoai.cshtml" />
     <Content Include="Views\CarStore\SpTheoHang.cshtml" />
@@ -498,7 +526,6 @@
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\GioHang\GioHangPartial.cshtml" />
     <Content Include="Views\GioHang\DatHang.cshtml" />
-    <Content Include="Views\CarStore\Xetonkho.cshtml" />
     <Content Include="Views\CarStore\Sanpham.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
@@ -506,11 +533,23 @@
     <Content Include="Views\Admin\Xe.cshtml" />
     <Content Include="Views\Admin\ThemXeMoi.cshtml" />
     <Content Include="tinymce\js\tinymce\langs\README.md" />
-    <Content Include="Views\Admin\Details.cshtml" />
-    <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Admin\EditXe.cshtml" />
     <Content Include="Views\KhachHang\Dangnhap.cshtml" />
     <Content Include="Views\KhachHang\Dangky.cshtml" />
+    <Content Include="Views\Admin\DeleteXe.cshtml" />
+    <Content Include="Views\Admin\DetailsXe.cshtml" />
+    <Content Include="Views\Admin\LoaiXe.cshtml" />
+    <Content Include="Views\Shared\_LayoutTrangChuNew.cshtml" />
+    <Content Include="Views\CarStore\Index.cshtml" />
+    <Content Include="Views\Admin\ThemLX.cshtml" />
+    <Content Include="Views\Admin\SuaLX.cshtml" />
+    <Content Include="Views\Admin\XoaLX.cshtml" />
+    <Content Include="Views\Admin\HangXe.cshtml" />
+    <Content Include="Views\Admin\ThemHX.cshtml" />
+    <Content Include="Views\Admin\SuaHX.cshtml" />
+    <Content Include="Views\Admin\XoaHX.cshtml" />
+    <Content Include="Views\Admin\ChiTietHX.cshtml" />
+    <Content Include="Views\Admin\ChiTietLX.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

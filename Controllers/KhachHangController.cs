@@ -31,7 +31,10 @@ namespace Nhom2_WebsiteBanXe.Controllers
             var diachi = collection["DiachiKH"];
             var email = collection["eMailKH"];
             var tendangnhap = collection["TendangnhapKH"];
-            var matkhau = collection["MatkhauKH"];
+            //var matkhau = collection["MatkhauKH"];
+            //mã hóa MD5
+            var matkhau = MaHoa.GetMD5(collection["MatkhauKH"]);
+            //
             var matkhaunl = collection["Matkhaunl"];
             if (String.IsNullOrEmpty(hoten))
             {
@@ -74,7 +77,9 @@ namespace Nhom2_WebsiteBanXe.Controllers
                 kh.DiaChi = diachi;
                 kh.eMail = email;
                 kh.TaiKhoan = tendangnhap;
-                kh.MatKhau = matkhau;
+                //kh.MatKhau = matkhau;
+                kh.MatKhau = MaHoa.GetMD5(matkhau);
+                //
                 data.KhachHangs.InsertOnSubmit(kh);
                 data.SubmitChanges();
                 return RedirectToAction("Dangnhap");
@@ -91,7 +96,8 @@ namespace Nhom2_WebsiteBanXe.Controllers
         public ActionResult Dangnhap(FormCollection collection)
         {
             var tendn = collection["TendangnhapKH"];
-            var mk = collection["MatkhauKH"];
+            //var mk = collection["MatkhauKH"];
+            var mk = MaHoa.GetMD5(collection["MatkhauKH"]);
             if (String.IsNullOrEmpty(tendn))
             {
                 ViewData["Loi1"] = "Vui lòng nhập Tài khoản";
@@ -102,7 +108,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
             }
             else
             {
-                KhachHang kh = data.KhachHangs.SingleOrDefault(n => n.TaiKhoan == tendn && n.MatKhau == mk);
+                KhachHang kh = data.KhachHangs.SingleOrDefault(n => n.TaiKhoan == tendn && n.MatKhau == MaHoa.GetMD5(mk));
                 if (kh != null)
                 {
                     Session["TaiKhoan"] = kh;

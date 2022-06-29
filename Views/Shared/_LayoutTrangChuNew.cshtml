@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap css -->
+    <link href="~/Content/TrangChu/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- style css -->
+    <link href="~/Content/TrangChu/css/style.css" rel="stylesheet" />
+    <!-- Responsive-->
+    <link href="~/Content/TrangChu/css/responsive.css" rel="stylesheet" />
+    <!-- Scrollbar Custom CSS -->
+    <link href="~/Content/TrangChu/css/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+    <link rel="stylesheet" href="~/Content/LTW.css">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="~/Content/assets/images/icons/favicon.ico" />
+    <title>Website Bán Xe - Rento</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<!-- body -->
+<body class="main-layout">
+    <header>
+        <!-- header inner -->
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="@Url.Action("Index","CarStore")"><img src="~/Content/TrangChu/images/logo.png" alt="#" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav mr-auto" style="padding-top:17.5px;">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Index","CarStore")"> Trang Chủ  </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Giới Thiệu</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Liên Hệ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Sanpham","CarStore")">Sản Phẩm</a>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                        <div class="dropdown">
+                                            <button class="dropbtn">NGƯỜI DÙNG</button>
+                                            <div class="dropdown-content">
+                                                <a href="@Url.Action("Dangnhap","KhachHang")">Đăng Nhập</a>
+                                                <a href="@Url.Action("Dangky","KhachHang")">Đăng Ký</a>
+                                                @Html.Action("GioHangPartial", "GioHang")
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- banner -->
+    @*<section class="banner_main">
+        <div class="container">
+            <div class="row d_flex">
+                <div class="col-md-12">
+                    <div class="text-bg">
+                        <h1>Find your best car here and buy</h1>
+                        <span>Rento</span>
+                        <p>
+
+                        </p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+    <!-- end banner -->
+    <!-- car -->
+    <div class="car">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="titlepage">
+                        <h2>ĐA DẠNG VỀ LOẠI XE</h2>
+                        <span>Website của chúng tôi chuyên cung cấp nhiều loại xe. Từ xe tải, xe con, xe du lịch đến các loại xe như xe máy và xe đạp,.. Bất cử loại xe nào mà quý khách cần!</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 padding_leri">
+                    <div class="car_box">
+                        <figure><img src="~/Content/TrangChu/images/car_img1.png" alt="#" /></figure>
+                        <h3>Hundai</h3>
+                    </div>
+                </div>
+                <div class="col-sm-4 padding_leri">
+                    <div class="car_box">
+                        <figure><img src="~/Content/TrangChu/images/car_img2.png" alt="#" /></figure>
+                        <h3>Audi</h3>
+                    </div>
+                </div>
+                <div class="col-sm-4 padding_leri">
+                    <div class="car_box">
+                        <figure><img src="~/Content/TrangChu/images/car_img3.png" alt="#" /></figure>
+                        <h3>BMW X5</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <br />
+                <p class="lead" style="text-align:center">LOẠI XE</p>
+                @Html.Action("Cacloaixe", "CarStore")
+                <br />
+                <p class="lead" style="text-align:center">HÃNG XE</p>
+                @Html.Action("Hangxe", "CarStore")
+            </div>
+            <div class="col-md-9">
+                
+
+                <div>
+                    @RenderBody()
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end car -->
+    <footer>
+        <div class="footer">
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>@DateTime.Now.Year - ASP.NET Application - Nhóm 2 - 19DTHA5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- Javascript files-->
+    <script src="~/Content/TrangChu/js/jquery.min.js"></script>
+    <script src="~/Content/TrangChu/js/popper.min.js"></script>
+    <script src="~/Content/TrangChu/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/TrangChu/js/jquery-3.0.0.min.js"></script>
+    <script src="~/Content/TrangChu/js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="~/Content/TrangChu/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/Content/TrangChu/js/custom.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+</html>

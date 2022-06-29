@@ -1,17 +1,18 @@
 ﻿@model Nhom2_WebsiteBanXe.Models.Xe
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "DeleteXe";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>CHI TIẾT SẢN PHẨM</h2>
+<h2>XÁC NHẬN THÔNG TIN SẢN PHẨM CẦN XÓA</h2>
 
+<h3>Bạn có muốn xóa sản phẩm này không?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Loại xe: 
+            Loại xe:
         </dt>
 
         <dd>
@@ -19,7 +20,7 @@
         </dd>
 
         <dt>
-            Hãng xe: 
+            Hãng xe:
         </dt>
 
         <dd>
@@ -27,7 +28,7 @@
         </dd>
 
         <dt>
-            Tên xe: 
+            Tên xe:
         </dt>
 
         <dd>
@@ -35,23 +36,23 @@
         </dd>
 
         <dt>
-            Giá bán: 
+            Giá bán:
         </dt>
 
         <dd>
-            @String.Format("{0:0,0}",Model.GiaTien) USD
+            @String.Format("{0:0,0}", Model.GiaTien) VNĐ
         </dd>
 
         <dt>
-            Hình ảnh 
+            Hình ảnh
         </dt>
 
         <dd>
-            <img src="@Url.Content("~/HinhSP/"+ Model.Anhbia)" width="120px"/>
+            <img src="@Url.Content("~/HinhSP/"+ Model.Anhbia)" width="120px" />
         </dd>
 
         <dt>
-            Mô tả: 
+            Mô tả:
         </dt>
 
         <dd style="width:600px;text-align:justify">
@@ -59,7 +60,7 @@
         </dd>
 
         <dt>
-            Năm sản xuất: 
+            Năm sản xuất:
         </dt>
 
         <dd>
@@ -67,7 +68,7 @@
         </dd>
 
         <dt>
-            Tình trạng xe: 
+            Tình trạng xe:
         </dt>
 
         <dd>
@@ -75,7 +76,7 @@
         </dd>
 
         <dt>
-            Ngày nhập: 
+            Ngày nhập:
         </dt>
 
         <dd>
@@ -83,7 +84,7 @@
         </dd>
 
         <dt>
-            Số lượng tồn: 
+            Số lượng tồn:
         </dt>
 
         <dd>
@@ -91,8 +92,14 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("TRỞ VỀ TRANG QUẢN LÝ XE", "Xe")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("CHỈNH SỬA", "EditXe", new { id = Model.idXe }) |
-    @Html.ActionLink("TRỞ VỀ TRANG QUẢN LÝ XE", "Xe")
-</p>

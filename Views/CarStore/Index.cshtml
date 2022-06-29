@@ -2,21 +2,10 @@
 @using PagedList.Mvc;
 @using Nhom2_WebsiteBanXe.Models
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_LayoutTrangChuNew.cshtml";
 }
-
-<h2>TOP 3 XE GIÁ CAO NHẤT</h2>
-<div>
-    @Html.Action("Laygiacao", "CarStore")
-</div>
-
-<h2>XE TỒN KHO NHIỀU</h2>
-<div>
-    @Html.Action("Xetonkho", "CarStore")
-</div>
-
-<h2>XE MỚI CẬP NHẬT</h2>
+<h2>NEW CARS</h2>
 @foreach (var xe in Model)
 {
     <div class="col-sm-4 col-lg-4 col-md-4">
@@ -33,18 +22,23 @@
 
             </a>
             <div class="ratings">
-                <p class="pull-right">
-                    <span class="glyphicon glyphicon-heart" style="color: red"></span> @xe.TinhTrangXe
-                </p>
-                <p class="pull-right">
-                    <span class="glyphicon glyphicon-folder-close" style="color: orange"></span> @xe.SoLuongTon
-                </p>
-                <p>
-                    <span class="glyphicon glyphicon-tag" style="text-indent: 5px; color: red"></span> @xe.GiaTien USD
-                </p>
-                <p>
-                    <span class="glyphicon glyphicon-calendar" style="text-indent: 5px; color: orange"></span> @xe.NamSanXuat
-                </p>
+                <div  class="pull-right">
+                    <p>
+                        <span class="glyphicon glyphicon-heart" style="color: red"></span> @xe.TinhTrangXe
+                    </p>
+                    <p>
+                        <span class="glyphicon glyphicon-folder-close" style="color: orange"></span> @xe.SoLuongTon
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <span class="glyphicon glyphicon-tag" style="text-indent: 5px; color: red"></span> @xe.GiaTien USD
+                    </p>
+                    <p>
+                        <span class="glyphicon glyphicon-calendar" style="text-indent: 5px; color: orange"></span> @xe.NamSanXuat
+                    </p>
+                </div>
+                
             </div>
         </div>
     </div>

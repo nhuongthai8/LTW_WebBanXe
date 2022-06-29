@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Nhom2_WebsiteBanXe.Models.HangXe>
+
+@{
+    ViewBag.Title = "HangXe";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">QUẢN LÝ HÃNG XE</h2>
+
+<p>
+    @Html.ActionLink("THÊM MỚI", "ThemHX")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên hãng xe
+        </th>
+        <th>
+            SĐT
+        </th>
+        <th>
+            Năm thành lập
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            eMail
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenHangXe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NamThanhLap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eMail)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "SuaHX", new { id=item.idHangXe }) |
+            @Html.ActionLink("Chi tiết", "ChiTietHX", new { id=item.idHangXe }) |
+            @Html.ActionLink("Xóa", "XoaHX", new { id=item.idHangXe })
+        </td>
+    </tr>
+}
+
+</table>

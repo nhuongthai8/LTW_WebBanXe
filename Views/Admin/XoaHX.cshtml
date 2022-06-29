@@ -1,0 +1,64 @@
+﻿@model Nhom2_WebsiteBanXe.Models.HangXe
+
+@{
+    ViewBag.Title = "XoaHX";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">XÒA HÃNG XE</h2>
+
+<h3>Bạn có muốn xóa hãng xe này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên hãng xe:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenHangXe)
+        </dd>
+
+        <dt>
+            SĐT: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            Năm thành lập: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamThanhLap)
+        </dd>
+
+        <dt>
+            Địa chỉ: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            eMail:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eMail)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("TRỞ VỀ TRANG QUẢN LÝ", "HangXe")
+        </div>
+    }
+</div>

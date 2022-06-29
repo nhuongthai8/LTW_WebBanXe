@@ -1,16 +1,22 @@
 ﻿@model Nhom2_WebsiteBanXe.Models.Xe
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "DetailsXe";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>XÁC NHẬN THÔNG TIN SẢN PHẨM CẦN XÓA</h2>
+<h2>CHI TIẾT SẢN PHẨM</h2>
 
-<h3>Bạn có muốn xóa sản phẩm này không?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            Mã xe:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idXe)
+        </dd>
         <dt>
             Loại xe:
         </dt>
@@ -40,7 +46,7 @@
         </dt>
 
         <dd>
-            @String.Format("{0:0,0}", Model.GiaTien) VNĐ
+            @String.Format("{0:0,0}", Model.GiaTien) USD
         </dd>
 
         <dt>
@@ -92,13 +98,8 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-default" /> |
-            @Html.ActionLink("TRỞ VỀ TRANG QUẢN LÝ XE", "Xe")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("CHỈNH SỬA", "EditXe", new { id = Model.idXe }) |
+    @Html.ActionLink("TRỞ VỀ TRANG QUẢN LÝ XE", "Xe")
+</p>

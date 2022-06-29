@@ -13,7 +13,6 @@ namespace Nhom2_WebsiteBanXe.Controllers
     public class AdminController : Controller
     {
         DataClasses1DataContext data = new DataClasses1DataContext();
-        // GET: Admin
         public ActionResult Index()
         {
             return View();
@@ -51,6 +50,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
             return View();
         }
 
+        //trang quản lý sản phẩm
         public ActionResult Xe(int? page)
         {
             int pageNum = (page?? 1);
@@ -59,6 +59,8 @@ namespace Nhom2_WebsiteBanXe.Controllers
             return View(data.Xes.ToList().OrderBy(a=>a.idXe).ToPagedList(pageNum,pageSzie));
         }
 
+        //------------------------------------------------------------------------------------------------------------------------------
+        //Chức năng thêm, xóa, sửa, xem chi tiết sản phẩm
         [HttpGet]
         public ActionResult ThemXeMoi()
         {
@@ -102,7 +104,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
             
         }
 
-        public ActionResult Details(int id)
+        public ActionResult DetailsXe(int id)
         {
             Xe xe = data.Xes.SingleOrDefault(a => a.idXe == id);
             ViewBag.idXe = xe.idXe;
@@ -115,7 +117,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
         }
 
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteXe(int id)
         {
             Xe xe = data.Xes.SingleOrDefault(a => a.idXe == id);
             ViewBag.idXe = xe.idXe;
@@ -126,7 +128,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
             }
             return View(xe);
         }
-        [HttpPost,ActionName("Delete")]
+        [HttpPost,ActionName("DeleteXe")]
         public ActionResult ConfirmDelete(int id)
         {
             Xe xe = data.Xes.SingleOrDefault(a => a.idXe == id);
@@ -141,7 +143,6 @@ namespace Nhom2_WebsiteBanXe.Controllers
             return RedirectToAction("Xe");
         }
 
-        //phần edit không edit được
         [HttpGet]
         public ActionResult EditXe(int id)
         {
@@ -190,12 +191,160 @@ namespace Nhom2_WebsiteBanXe.Controllers
             }
             
         }
+        //------------------------------------------------------------------------------------------------------------------------------
+        //Trang quản lý loại xe
+        public ActionResult LoaiXe()
+        {
+            return View(data.LoaiXes.ToList().OrderBy(a=>a.idLoaiXe));
+        }
+        //Chức năng thêm, xóa, sửa loại xe
+        //thêm
+        [HttpGet]
+        public ActionResult ThemLX()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ThemLX(LoaiXe lx)
+        {
+            data.LoaiXes.InsertOnSubmit(lx);
+            data.SubmitChanges();
+            return RedirectToAction("LoaiXe");
+        }
+        //sửa
+        [HttpGet]
+        public ActionResult SuaLX(int id)
+        {
+            LoaiXe lx = data.LoaiXes.SingleOrDefault(a=>a.idLoaiXe == id);
+            //if (lx == null)
+            //{
+            //    Response.StatusCode = 404;
+            //    return null;
+            //}
+            return View(lx);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaLx(int id)
+        {
+            var lx = data.LoaiXes.FirstOrDefault(a => a.idLoaiXe == id);
+            lx.idLoaiXe = id;
+            if (ModelState.IsValid)
+            {
+                UpdateModel(lx);
+                data.SubmitChanges();
+                return RedirectToAction("LoaiXe");
+            }
+            return this.EditXe(id);
+        }
+        //xóa
+        [HttpGet]
+        public ActionResult XoaLX(int id)
+        {
+            LoaiXe lx = data.LoaiXes.SingleOrDefault(a => a.idLoaiXe == id);
 
-
-
-       
-
-
-
+            return View(lx);
+        }
+        [HttpPost,ActionName("XoaLX")]
+        public ActionResult ConfirmXoaLX(int id)
+        {
+            LoaiXe lx = data.LoaiXes.SingleOrDefault(a => a.idLoaiXe == id);
+            ViewBag.idLoaiXe = lx.idLoaiXe;
+            if (lx == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.LoaiXes.DeleteOnSubmit(lx);
+            data.SubmitChanges();
+            return RedirectToAction("LoaiXe");
+        }
+        //xem
+        public ActionResult ChiTietLX(int id)
+        {
+            LoaiXe lx = data.LoaiXes.SingleOrDefault(a => a.idLoaiXe == id);
+            ViewBag.idLoaiXe = lx.idLoaiXe;
+            if (lx == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(lx);
+        }
+        //------------------------------------------------------------------------------------------------------------------------------
+        //Trang quản lý hãng xe
+        public ActionResult HangXe()
+        {
+            return View(data.HangXes.ToList().OrderBy(a => a.idHangXe));
+        }
+        //Chức năng xem, thêm, xóa ,sửa hãng xe
+        //thêm
+        [HttpGet]
+        public ActionResult ThemHX()
+        {
+            return View();
+        }
+        public ActionResult ThemHX(HangXe hx)
+        {
+            data.HangXes.InsertOnSubmit(hx);
+            data.SubmitChanges();
+            return RedirectToAction("HangXe");
+        }
+        //sửa
+        [HttpGet]
+        public ActionResult SuaHX(int id)
+        {
+            HangXe hx = data.HangXes.SingleOrDefault(a => a.idHangXe == id);
+            return View(hx);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaHx(int id)
+        {
+            var hx = data.HangXes.FirstOrDefault(a => a.idHangXe == id);
+            hx.idHangXe = id;
+            if (ModelState.IsValid)
+            {
+                UpdateModel(hx);
+                data.SubmitChanges();
+                return RedirectToAction("HangXe");
+            }
+            return this.EditXe(id);
+        }
+        //xóa
+        [HttpGet]
+        public ActionResult XoaHX(int id)
+        {
+            HangXe hx = data.HangXes.SingleOrDefault(a => a.idHangXe == id);
+            return View(hx);
+        }
+        [HttpPost,ActionName("XoaHX")]
+        public ActionResult ConfirmXoaHX(int id)
+        {
+            HangXe hx = data.HangXes.SingleOrDefault(a => a.idHangXe == id);
+            ViewBag.idHangXe = hx.idHangXe;
+            if (hx == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.HangXes.DeleteOnSubmit(hx);
+            data.SubmitChanges();
+            return RedirectToAction("HangXe");
+        }
+        //xem
+        public ActionResult ChiTietHX(int id)
+        {
+            HangXe hx = data.HangXes.SingleOrDefault(a => a.idHangXe == id);
+            ViewBag.idHangXe = hx.idHangXe;
+            if (hx == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(hx);
+        }
+        //------------------------------------------------------------------------------------------------------------------------------
     }
 }
