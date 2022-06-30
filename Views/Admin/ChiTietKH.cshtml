@@ -1,0 +1,82 @@
+﻿@model Nhom2_WebsiteBanXe.Models.KhachHang
+
+@{
+    ViewBag.Title = "ChiTietKH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">CHI TIẾT THÔNG TIN KHÁCH HÀNG</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ tên: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            Giới tính: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            Ngày sinh:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            SĐT
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            eMail:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eMail)
+        </dd>
+
+        <dt>
+            Tài khoản:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan)
+        </dd>
+
+        <dt>
+            Mật khẩu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("SỬA", "SuaKH", new { id = Model.MaKH }) |
+    @Html.ActionLink("TRỞ VỀ", "KhachHang")
+</p>

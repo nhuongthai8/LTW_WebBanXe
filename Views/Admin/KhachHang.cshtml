@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Nhom2_WebsiteBanXe.Models.KhachHang>
+
+@{
+    ViewBag.Title = "KhachHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">QUẢN LÝ THÔNG TIN KHÁCH HÀNG</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Họ tên
+        </th>
+        <th>
+            Giới tính
+        </th>
+        <th>
+            Ngày sinh
+        </th>
+        <th>
+            SĐT
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            eMail
+        </th>
+        <th>
+            Tài khoản
+        </th>
+        <th>
+            Mật khẩu
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GioiTinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgaySinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eMail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaiKhoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MatKhau)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "SuaKH", new { id=item.MaKH }) |
+            @Html.ActionLink("Chi tiết", "ChiTietKH", new { id=item.MaKH }) |
+            @Html.ActionLink("Xóa", "XoaKH", new { id=item.MaKH })
+        </td>
+    </tr>
+}
+
+</table>

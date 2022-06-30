@@ -221,6 +221,10 @@
     <Content Include="Content\images\banner1.jpg" />
     <Content Include="Content\images\banner2.jpg" />
     <Content Include="Content\images\banner3.jpg" />
+    <Content Include="Content\images\banner4.jpg" />
+    <Content Include="Content\images\banner5.jpg" />
+    <Content Include="Content\images\banner6.jpg" />
+    <Content Include="Content\images\banner7.jpg" />
     <Content Include="Content\LTW.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\reset.css" />
@@ -244,6 +248,8 @@
     <Content Include="Content\TrangChu\images\cross_img.png" />
     <Content Include="Content\TrangChu\images\loading.gif" />
     <Content Include="Content\TrangChu\images\logo.png" />
+    <Content Include="Content\TrangChu\images\logo2.png" />
+    <Content Include="Content\TrangChu\images\mail.png" />
     <Content Include="Content\TrangChu\images\menu_icon.png" />
     <Content Include="Content\TrangChu\images\te1.png" />
     <Content Include="Content\TrangChu\js\bootstrap.bundle.min.js" />
@@ -550,6 +556,10 @@
     <Content Include="Views\Admin\XoaHX.cshtml" />
     <Content Include="Views\Admin\ChiTietHX.cshtml" />
     <Content Include="Views\Admin\ChiTietLX.cshtml" />
+    <Content Include="Views\Admin\KhachHang.cshtml" />
+    <Content Include="Views\Admin\SuaKH.cshtml" />
+    <Content Include="Views\Admin\ChiTietKH.cshtml" />
+    <Content Include="Views\Admin\XoaKH.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

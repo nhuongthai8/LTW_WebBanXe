@@ -285,6 +285,8 @@ namespace Nhom2_WebsiteBanXe.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateInput(false)]
         public ActionResult ThemHX(HangXe hx)
         {
             data.HangXes.InsertOnSubmit(hx);
@@ -310,7 +312,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
                 data.SubmitChanges();
                 return RedirectToAction("HangXe");
             }
-            return this.EditXe(id);
+            return this.SuaHX(id);
         }
         //xóa
         [HttpGet]
@@ -344,6 +346,66 @@ namespace Nhom2_WebsiteBanXe.Controllers
                 return null;
             }
             return View(hx);
+        }
+        //------------------------------------------------------------------------------------------------------------------------------
+        //Trang quản lý thông tin khách hàng
+        public ActionResult KhachHang()
+        {
+            return View(data.KhachHangs.ToList().OrderBy(a=>a.MaKH));
+        }
+        //sửa
+        [HttpGet]
+        public ActionResult SuaKH(int id)
+        {
+            KhachHang kh = data.KhachHangs.SingleOrDefault(a => a.MaKH == id); 
+            return View(kh);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaKh(int id)
+        {
+            var kh = data.KhachHangs.FirstOrDefault(a => a.MaKH == id);
+            kh.MaKH = id;
+            if (ModelState.IsValid)
+            {
+                UpdateModel(kh);
+                data.SubmitChanges();
+                return RedirectToAction("KhachHang");
+            }
+            return this.SuaKH(id);
+        }
+        //chi tiết
+        public ActionResult ChiTietKH(int id)
+        {
+            KhachHang kh = data.KhachHangs.SingleOrDefault(a => a.MaKH == id);
+            ViewBag.MaKH = kh.MaKH;
+            if (kh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(kh);
+        }
+        //xóa
+        [HttpGet]
+        public ActionResult XoaKH(int id)
+        {
+            KhachHang kh = data.KhachHangs.SingleOrDefault(a => a.MaKH == id);
+            return View(kh);
+        }
+        [HttpPost,ActionName("XoaKH")]
+        public ActionResult XoaKh(int id)
+        {
+            KhachHang kh = data.KhachHangs.SingleOrDefault(a => a.MaKH == id);
+            ViewBag.MaKH = kh.MaKH;
+            if (kh == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.KhachHangs.DeleteOnSubmit(kh);
+            data.SubmitChanges();
+            return RedirectToAction("KhachHang");
         }
         //------------------------------------------------------------------------------------------------------------------------------
     }

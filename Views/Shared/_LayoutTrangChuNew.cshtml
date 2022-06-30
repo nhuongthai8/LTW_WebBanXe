@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="~/Content/LTW.css">
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="~/Content/assets/images/icons/favicon.ico" />
-    <title>Website Bán Xe - Rento</title>
+    <title>Website Bán Xe - AroundtheClock</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -36,7 +36,7 @@
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo">
-                                    <a href="@Url.Action("Index","CarStore")"><img src="~/Content/TrangChu/images/logo.png" alt="#" /></a>
+                                    <a href="@Url.Action("Index","CarStore")"><img src="~/Content/TrangChu/images/logo2.png" alt="#" /></a>
                                 </div>
                             </div>
                         </div>
@@ -82,22 +82,47 @@
         </div>
     </header>
     <!-- banner -->
-    @*<section class="banner_main">
-        <div class="container">
-            <div class="row d_flex">
-                <div class="col-md-12">
-                    <div class="text-bg">
-                        <h1>Find your best car here and buy</h1>
-                        <span>Rento</span>
-                        <p>
-
-                        </p>
-                        <a href="#">Read More</a>
+    <div class="col-md-12">
+        <div class="row carousel-holder">
+            <div class="col-md-12">
+                <br />
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img class="slide-image img-thumbnail" src="~/Content/images/banner7.jpg" alt="">
+                            <h3 class="carousel-caption">Audi M8 V10</h3>
+                        </div>
+                        <div class="item">
+                            <img class="slide-image img-thumbnail" src="~/Content/images/banner6.jpg" alt="">
+                            <h3 class="carousel-caption">BMW E92 M3</h3>
+                        </div>
+                        <div class="item">
+                            <img class="slide-image img-thumbnail" src="~/Content/images/banner5.jpg" alt="">
+                            <h3 class="carousel-caption">Lamborghini Aventador</h3>
+                        </div>
+                        <div class="item">
+                            <img class="slide-image img-thumbnail" src="~/Content/images/banner4.jpg" alt="">
+                            <h3 class="carousel-caption">Lamborghini Veneno</h3>
+                        </div>
                     </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
                 </div>
             </div>
+
         </div>
-    </section>*@
+    </div>
+    
     <!-- end banner -->
     <!-- car -->
     <div class="car">
@@ -106,7 +131,7 @@
                 <div class="col-12">
                     <div class="titlepage">
                         <h2>ĐA DẠNG VỀ LOẠI XE</h2>
-                        <span>Website của chúng tôi chuyên cung cấp nhiều loại xe. Từ xe tải, xe con, xe du lịch đến các loại xe như xe máy và xe đạp,.. Bất cử loại xe nào mà quý khách cần!</span>
+                        <span>Website của chúng tôi chuyên cung cấp nhiều loại xe. Từ xe tải, xe con, xe du lịch đến các loại xe như xe máy và xe đạp,.. Bất cứ loại xe nào mà quý khách cần!</span>
                     </div>
                 </div>
             </div>
@@ -137,10 +162,10 @@
         <div class="row">
             <div class="col-md-3">
                 <br />
-                <p class="lead" style="text-align:center">LOẠI XE</p>
+                <p class="lead" style="text-align:center; color:black">LOẠI XE</p>
                 @Html.Action("Cacloaixe", "CarStore")
                 <br />
-                <p class="lead" style="text-align:center">HÃNG XE</p>
+                <p class="lead" style="text-align: center; color: black">HÃNG XE</p>
                 @Html.Action("Hangxe", "CarStore")
             </div>
             <div class="col-md-9">
