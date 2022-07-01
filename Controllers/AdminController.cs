@@ -408,5 +408,14 @@ namespace Nhom2_WebsiteBanXe.Controllers
             return RedirectToAction("KhachHang");
         }
         //------------------------------------------------------------------------------------------------------------------------------
+        //Trang quản lý đơn hàng
+        public ActionResult DonHang(/*int? page*/)
+        {
+            //int pageNum = (page ?? 1);
+            //int pageSzie = 7;
+            //return View(data.ChiTietOrders.ToList().OrderBy(a=>a.MaOrder).ToPagedList(pageNum,pageSzie));
+
+            return View(data.ChiTietOrders.ToList().OrderBy(a => a.MaOrder));
+        }
     }
 }

@@ -147,6 +147,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AboutUs.css" />
     <Content Include="Content\assets2\css\style.css" />
     <Content Include="Content\assets2\fonts\material-icon\css\material-design-iconic-font.css" />
     <Content Include="Content\assets2\fonts\material-icon\css\material-design-iconic-font.min.css" />
@@ -218,6 +219,24 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Contact\css\animate.css" />
+    <Content Include="Content\Contact\css\bootstrap.min.css" />
+    <Content Include="Content\Contact\css\bootstrap\mixins\_alert.css" />
+    <Content Include="Content\Contact\css\bootstrap\mixins\_border-radius.css" />
+    <Content Include="Content\Contact\css\bootstrap\mixins\_box-shadow.css" />
+    <Content Include="Content\Contact\css\bootstrap\mixins\_screen-reader.css" />
+    <Content Include="Content\Contact\css\bootstrap\mixins\_visibility.css" />
+    <Content Include="Content\Contact\css\bootstrap\utilities\_stretched-link.css" />
+    <Content Include="Content\Contact\css\bootstrap\utilities\_visibility.css" />
+    <Content Include="Content\Contact\css\bootstrap\_media.css" />
+    <Content Include="Content\Contact\css\style.css" />
+    <Content Include="Content\Contact\js\bootstrap.min.js" />
+    <Content Include="Content\Contact\js\google-map.js" />
+    <Content Include="Content\Contact\js\jquery.min.js" />
+    <Content Include="Content\Contact\js\jquery.validate.min.js" />
+    <Content Include="Content\Contact\js\main.js" />
+    <Content Include="Content\Contact\js\popper.js" />
+    <Content Include="Content\images\AboutUs.png" />
     <Content Include="Content\images\banner1.jpg" />
     <Content Include="Content\images\banner2.jpg" />
     <Content Include="Content\images\banner3.jpg" />
@@ -225,6 +244,7 @@
     <Content Include="Content\images\banner5.jpg" />
     <Content Include="Content\images\banner6.jpg" />
     <Content Include="Content\images\banner7.jpg" />
+    <Content Include="Content\images\pic.jpg" />
     <Content Include="Content\LTW.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\reset.css" />
@@ -434,6 +454,12 @@
     <Content Include="Content\assets2\scss\layouts\main.scss" />
     <Content Include="Content\assets2\scss\layouts\responsive.scss" />
     <Content Include="Content\assets2\scss\style.scss" />
+    <Content Include="Content\Contact\css\.DS_Store" />
+    <Content Include="Content\Contact\css\bootstrap\.DS_Store" />
+    <Content Include="Content\Contact\css\bootstrap\mixins\.DS_Store" />
+    <Content Include="Content\Contact\fonts\.DS_Store" />
+    <Content Include="Content\Contact\images\.DS_Store" />
+    <Content Include="Content\Contact\js\.DS_Store" />
     <None Include="Models\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
@@ -560,6 +586,9 @@
     <Content Include="Views\Admin\SuaKH.cshtml" />
     <Content Include="Views\Admin\ChiTietKH.cshtml" />
     <Content Include="Views\Admin\XoaKH.cshtml" />
+    <Content Include="Views\CarStore\Contact.cshtml" />
+    <Content Include="Views\CarStore\AboutUs.cshtml" />
+    <Content Include="Views\Admin\DonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

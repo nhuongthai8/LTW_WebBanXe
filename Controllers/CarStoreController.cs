@@ -72,6 +72,58 @@ namespace Nhom2_WebsiteBanXe.Controllers
             return View(xe.Single());
         }
 
+        public ActionResult Contact()
+        {
+            if(Session["TaiKhoan"] ==null || Session["TaiKhoan"].ToString() == "")
+            {
+                return RedirectToAction("Dangnhap", "KhachHang");
+            }
+            return View();
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Contact(FormCollection collection)
+        {
+            LienHe lh = new LienHe();
+            KhachHang kh = (KhachHang)Session["TaiKhoan"];
+            var hoten = collection["HoTen"];
+            var email = collection["eMail"];
+            var tieude = collection["NoiDung"];
+            var noidunglh = collection["NoiDung"];
+
+            if (String.IsNullOrEmpty(hoten))
+            {
+                ViewData["Loi1"] = "Vui lòng nhập họ và tên!";
+            }
+            else if (String.IsNullOrEmpty(tieude))
+            {
+                ViewData["Loi2"] = "Vui lòng nhập tiêu đề!";
+            }
+            else if (String.IsNullOrEmpty(noidunglh))
+            {
+                ViewData["Loi2"] = "Vui lòng nhập nội dung!";
+            }
+            else
+            {
+                lh.id = kh.MaKH;
+                lh.NoiDung = noidunglh;
+                lh.HoTen = hoten;
+                lh.eMail = email;
+                lh.TieuDe = tieude;
+                if (ModelState.IsValid)
+                {
+                    data.LienHes.InsertOnSubmit(lh);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            return this.Contact();
+        }
+
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
         
     }
 }
