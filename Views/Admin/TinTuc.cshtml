@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Nhom2_WebsiteBanXe.Models.TinTuc>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<textarea>...</textarea>
+    }
+}
+
+
+@{
+    ViewBag.Title = "TinTuc";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">QUẢN LÝ TIN TỨC</h2>
+
+<p>
+    @Html.ActionLink("THÊM MỚI", "ThemTT")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã tin tức
+        </th>
+        <th>
+            Mã loại
+        </th>
+        <th>
+            Tiêu đề
+        </th>
+        <th>
+            Nội dung
+        </th>
+        <th>
+            Ảnh bìa
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idTT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDung)
+                @*@Truncate(item.NoiDung, 200)*@
+            </td>
+            <td>
+                <img src="@Url.Content("~/HinhTT/"+ item.Anhbia)" width="120px"/>
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "SuaTT", new { id = item.idTT }) |
+                @Html.ActionLink("Chi tiết", "ChiTietTT", new { id = item.idTT }) |
+                @Html.ActionLink("Xóa", "XoaTT", new { id = item.idTT })
+            </td>
+        </tr>
+    }
+
+</table>

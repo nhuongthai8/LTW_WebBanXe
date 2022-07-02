@@ -1,0 +1,64 @@
+﻿@model Nhom2_WebsiteBanXe.Models.TinTuc
+
+@{
+    ViewBag.Title = "XoaTT";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">XÓA TIN TỨC</h2>
+
+<h3>Bạn có muốn xóa tin tức này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã tin:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idTT)
+        </dd>
+
+        <dt>
+            Loại tin:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TheLoaiTin.TenLoai)
+        </dd>
+
+        <dt>
+            Tiêu đề:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            Nội dung:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            Ảnh bìa:
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/HinhTT/"+ Model.Anhbia)" width="120px" />
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("TRỞ VỀ DANH SÁCH", "TinTuc")
+        </div>
+    }
+</div>

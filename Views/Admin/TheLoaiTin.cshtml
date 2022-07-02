@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Nhom2_WebsiteBanXe.Models.TheLoaiTin>
+
+@{
+    ViewBag.Title = "TheLoaiTin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">QUẢN LÝ THỂ LOẠI TIN</h2>
+
+<p>
+    @Html.ActionLink("THÊM MỚI", "ThemTLT")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã loại
+        </th>
+        <th>
+            Tên loại
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.idLoai)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenLoai)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "SuaTLT", new { id = item.idLoai }) |
+        @Html.ActionLink("Xóa", "XoaTLT", new { id = item.idLoai })
+    </td>
+</tr>
+}
+
+</table>

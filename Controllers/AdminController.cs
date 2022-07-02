@@ -409,13 +409,213 @@ namespace Nhom2_WebsiteBanXe.Controllers
         }
         //------------------------------------------------------------------------------------------------------------------------------
         //Trang quản lý đơn hàng
-        public ActionResult DonHang(/*int? page*/)
+        public ActionResult DonHang(int? page)
         {
-            //int pageNum = (page ?? 1);
-            //int pageSzie = 7;
-            //return View(data.ChiTietOrders.ToList().OrderBy(a=>a.MaOrder).ToPagedList(pageNum,pageSzie));
+            int pageNum = (page?? 1);
+            int pageSzie = 7;
+            return View(data.ChiTietOrders.ToList().OrderBy(a => a.MaOrder).ToPagedList(pageNum, pageSzie));
 
-            return View(data.ChiTietOrders.ToList().OrderBy(a => a.MaOrder));
+            //return View(data.ChiTietOrders.ToList().OrderBy(a => a.MaOrder));
+        }
+        //chi tiết
+        public ActionResult ChiTietDH(int id)
+        {
+            ChiTietOrder ct = data.ChiTietOrders.FirstOrDefault(a => a.MaOrder == id);
+            ViewBag.MaOrder = ct.MaOrder;
+            //if (ct == null)
+            //{
+            //    Response.StatusCode = 404;
+            //    return null;
+            //}
+            return View(ct);
+        }
+        //sửa
+        [HttpGet]
+        public ActionResult SuaDH(int id)
+        {
+            ChiTietOrder ct = data.ChiTietOrders.SingleOrDefault(a => a.MaOrder == id);
+            return View(ct);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaDh(int id)
+        {
+            var ct = data.ChiTietOrders.FirstOrDefault(a => a.MaOrder == id);
+            ct.MaOrder = id;
+            if (ModelState.IsValid)
+            {
+                UpdateModel(ct);
+                data.SubmitChanges();
+                return RedirectToAction("DonHang");
+            }
+            return this.SuaDH(id);
+        }
+        //------------------------------------------------------------------------------------------------------------------------------
+        //Trang quản lý thể loại tin tức
+        public ActionResult TheLoaiTin()
+        {
+            return View(data.TheLoaiTins.ToList().OrderBy(a=>a.idLoai));
+        }
+        //thêm
+        [HttpGet]
+        public ActionResult ThemTLT()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ThemTLT(TheLoaiTin tlt)
+        {
+            data.TheLoaiTins.InsertOnSubmit(tlt);
+            data.SubmitChanges();
+            return RedirectToAction("TheLoaiTin");
+        }
+        //xóa
+        [HttpGet]
+        public ActionResult XoaTLT(int id)
+        {
+            TheLoaiTin tlt = data.TheLoaiTins.SingleOrDefault(a => a.idLoai == id);
+            return View(tlt);
+        }
+        [HttpPost, ActionName("XoaTLT")]
+        public ActionResult XoaTlt(int id)
+        {
+            TheLoaiTin tlt = data.TheLoaiTins.SingleOrDefault(a => a.idLoai == id);
+            ViewBag.idLoai = tlt.idLoai;
+            if (tlt == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.TheLoaiTins.DeleteOnSubmit(tlt);
+            data.SubmitChanges();
+            return RedirectToAction("TheLoaiTin");
+        }
+        //sửa
+        [HttpGet]
+        public ActionResult SuaTLT(int id)
+        {
+            TheLoaiTin tlt = data.TheLoaiTins.SingleOrDefault(a => a.idLoai == id);
+            return View(tlt);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaTlt(int id)
+        {
+            var tlt = data.TheLoaiTins.FirstOrDefault(a => a.idLoai == id);
+            tlt.idLoai = id;
+            if (ModelState.IsValid)
+            {
+                UpdateModel(tlt);
+                data.SubmitChanges();
+                return RedirectToAction("TheLoaiTin");
+            }
+            return this.SuaTLT(id);
+        }
+        //------------------------------------------------------------------------------------------------------------------------------
+        //Trang quản lý tin tức
+        public ActionResult TinTuc()
+        {
+            return View(data.TinTucs.ToList().OrderBy(a=>a.idTT));
+        }
+        //thêm
+        [HttpGet]
+        public ActionResult ThemTT()
+        {
+            ViewBag.idLoai = new SelectList(data.TheLoaiTins.ToList().OrderBy(b => b.TenLoai), "idLoai", "TenLoai");
+            return View();
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ThemTT(TinTuc tt, HttpPostedFileBase fileupload)
+        {
+            ViewBag.idLoai = new SelectList(data.TheLoaiTins.ToList().OrderBy(b => b.TenLoai), "idLoai", "TenLoai");
+
+            if (fileupload == null)
+            {
+                ViewBag.ThongBao = "Vui lòng chọn ảnh bìa";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    var filename = Path.GetFileName(fileupload.FileName);
+                    var path = Path.Combine(Server.MapPath("~/HinhTT"), filename);
+                    if (System.IO.File.Exists(path))
+                    {
+                        ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+                    }
+                    else
+                    {
+                        fileupload.SaveAs(path);
+                    }
+                    tt.Anhbia = filename;
+                    data.TinTucs.InsertOnSubmit(tt);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("TinTuc");
+            }
+
+        }
+        //xóa
+        public ActionResult XoaTT(int id)
+        {
+            TinTuc tt = data.TinTucs.SingleOrDefault(a => a.idTT == id);
+            ViewBag.idTT = tt.idTT;
+            if (tt == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(tt);
+        }
+        //sửa
+        [HttpGet]
+        public ActionResult SuaTT(int id)
+        {
+            TinTuc tt = data.TinTucs.SingleOrDefault(a => a.idTT == id);
+            if (tt == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            ViewBag.idLoai = new SelectList(data.TheLoaiTins.ToList().OrderBy(b => b.TenLoai), "idLoai", "TenLoai");
+            return View(tt);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaTT(int id, HttpPostedFileBase fileUpload)
+        {
+            var tt = data.TinTucs.FirstOrDefault(a => a.idTT == id);
+            tt.idTT = id;
+            ViewBag.idLoai = new SelectList(data.TheLoaiTins.ToList().OrderBy(b => b.TenLoai), "idLoai", "TenLoai");
+            if (fileUpload == null)
+            {
+                ViewBag.ThongBao = "Vui lòng chọn ảnh bìa";
+                return View(tt);
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    var fileName = Path.GetFileName(fileUpload.FileName);
+                    var path = Path.Combine(Server.MapPath("~/HinhTT"), fileName);
+                    if (System.IO.File.Exists(path))
+                        ViewBag.ThongBao = "Ảnh đã tồn tại";
+                    else
+                    {
+                        fileUpload.SaveAs(path);
+                    }
+                    tt.Anhbia = fileName;
+                    tt.idTT = id;
+                    UpdateModel(tt);
+                    data.SubmitChanges();
+                    return RedirectToAction("TinTuc");
+                }
+                return this.SuaTT(id);
+            }
+
         }
     }
 }

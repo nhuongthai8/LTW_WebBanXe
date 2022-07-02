@@ -1,8 +1,8 @@
-﻿@model IEnumerable<Nhom2_WebsiteBanXe.Models.ChiTietOrder>
+﻿@*@model IEnumerable<Nhom2_WebsiteBanXe.Models.ChiTietOrder>*@
 
-@*@using Nhom2_WebsiteBanXe.Models
+@using Nhom2_WebsiteBanXe.Models
 @using PagedList.Mvc;
-@model PagedList.PagedList<Nhom2_WebsiteBanXe.Models.ChiTietOrder>*@
+@model PagedList.PagedList<Nhom2_WebsiteBanXe.Models.ChiTietOrder>
 
 @{
     ViewBag.Title = "DonHang";
@@ -11,14 +11,13 @@
 
 <h2 style="text-align:center">QUẢN LÝ ĐƠN HÀNG</h2>
 
-
 <table class="table">
     <tr>
         <th>
             Mã Order
         </th>
         <th>
-            Mã khách hàng
+            Mã xe
         </th>
         <th>
             Tên xe
@@ -30,7 +29,7 @@
             Số lượng
         </th>
         <th>
-            Thành tiền
+            Đơn giá
         </th>
         <th>
             Ngày tạo
@@ -39,10 +38,10 @@
             Ngày giao
         </th>
         <th>
-            Tình trạng giao hàng
+            Tình trạng thanh toán
         </th>
         <th>
-            Tình trạng thanh toán
+            Tình trạng giao hàng
         </th>
         <th></th>
     </tr>
@@ -54,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.MaOrder)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Order.MaKH)
+                @Html.DisplayFor(modelItem => item.idXe)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Xe.TenXe)
@@ -75,16 +74,27 @@
                 @Html.DisplayFor(modelItem => item.Order.NgayGiao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Order.TinhTrangGH)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Order.TinhTrangThanhToan)
             </td>
             <td>
-                @Html.ActionLink("Chi tiết", "ChiTietDH", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Xóa", "XoaDH", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.Order.TinhTrangGH)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "SuaDH", new { id = item.MaOrder }) |
+                @Html.ActionLink("Chi tiết", "ChiTietDH", new { id = item.MaOrder }) |
+                @Html.ActionLink("Xóa", "XoaDH", new { id=item.MaOrder })
             </td>
         </tr>
     }
 
 </table>
+
+<div style="text-align:center">
+    <div>
+        @*Tạo liên kết các trang*@
+        Trang @(Model.PageNumber>Model.PageCount?10:Model.PageNumber) /@Model.PageCount
+    </div>
+    <div class="Menutrang">
+        @Html.PagedListPager(Model, page => Url.Action("DonHang", new { page = page }))
+    </div>
+</div>

@@ -51,15 +51,15 @@ namespace Nhom2_WebsiteBanXe.Models
     partial void InsertOrder(Order instance);
     partial void UpdateOrder(Order instance);
     partial void DeleteOrder(Order instance);
+    partial void InsertLienHe(LienHe instance);
+    partial void UpdateLienHe(LienHe instance);
+    partial void DeleteLienHe(LienHe instance);
     partial void InsertTheLoaiTin(TheLoaiTin instance);
     partial void UpdateTheLoaiTin(TheLoaiTin instance);
     partial void DeleteTheLoaiTin(TheLoaiTin instance);
     partial void InsertTinTuc(TinTuc instance);
     partial void UpdateTinTuc(TinTuc instance);
     partial void DeleteTinTuc(TinTuc instance);
-    partial void InsertLienHe(LienHe instance);
-    partial void UpdateLienHe(LienHe instance);
-    partial void DeleteLienHe(LienHe instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -148,6 +148,14 @@ namespace Nhom2_WebsiteBanXe.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<LienHe> LienHes
+		{
+			get
+			{
+				return this.GetTable<LienHe>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TheLoaiTin> TheLoaiTins
 		{
 			get
@@ -161,14 +169,6 @@ namespace Nhom2_WebsiteBanXe.Models
 			get
 			{
 				return this.GetTable<TinTuc>();
-			}
-		}
-		
-		public System.Data.Linq.Table<LienHe> LienHes
-		{
-			get
-			{
-				return this.GetTable<LienHe>();
 			}
 		}
 	}
@@ -1768,295 +1768,6 @@ namespace Nhom2_WebsiteBanXe.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TheLoaiTin")]
-	public partial class TheLoaiTin : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idLoai;
-		
-		private string _TenLoai;
-		
-		private EntitySet<TinTuc> _TinTucs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidLoaiChanging(int value);
-    partial void OnidLoaiChanged();
-    partial void OnTenLoaiChanging(string value);
-    partial void OnTenLoaiChanged();
-    #endregion
-		
-		public TheLoaiTin()
-		{
-			this._TinTucs = new EntitySet<TinTuc>(new Action<TinTuc>(this.attach_TinTucs), new Action<TinTuc>(this.detach_TinTucs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idLoai", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idLoai
-		{
-			get
-			{
-				return this._idLoai;
-			}
-			set
-			{
-				if ((this._idLoai != value))
-				{
-					this.OnidLoaiChanging(value);
-					this.SendPropertyChanging();
-					this._idLoai = value;
-					this.SendPropertyChanged("idLoai");
-					this.OnidLoaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLoai", DbType="NVarChar(50)")]
-		public string TenLoai
-		{
-			get
-			{
-				return this._TenLoai;
-			}
-			set
-			{
-				if ((this._TenLoai != value))
-				{
-					this.OnTenLoaiChanging(value);
-					this.SendPropertyChanging();
-					this._TenLoai = value;
-					this.SendPropertyChanged("TenLoai");
-					this.OnTenLoaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TheLoaiTin_TinTuc", Storage="_TinTucs", ThisKey="idLoai", OtherKey="idLoai")]
-		public EntitySet<TinTuc> TinTucs
-		{
-			get
-			{
-				return this._TinTucs;
-			}
-			set
-			{
-				this._TinTucs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TinTucs(TinTuc entity)
-		{
-			this.SendPropertyChanging();
-			entity.TheLoaiTin = this;
-		}
-		
-		private void detach_TinTucs(TinTuc entity)
-		{
-			this.SendPropertyChanging();
-			entity.TheLoaiTin = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TinTuc")]
-	public partial class TinTuc : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _idTT;
-		
-		private System.Nullable<int> _idLoai;
-		
-		private string _TieuDe;
-		
-		private string _NoiDung;
-		
-		private EntityRef<TheLoaiTin> _TheLoaiTin;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidTTChanging(int value);
-    partial void OnidTTChanged();
-    partial void OnidLoaiChanging(System.Nullable<int> value);
-    partial void OnidLoaiChanged();
-    partial void OnTieuDeChanging(string value);
-    partial void OnTieuDeChanged();
-    partial void OnNoiDungChanging(string value);
-    partial void OnNoiDungChanged();
-    #endregion
-		
-		public TinTuc()
-		{
-			this._TheLoaiTin = default(EntityRef<TheLoaiTin>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int idTT
-		{
-			get
-			{
-				return this._idTT;
-			}
-			set
-			{
-				if ((this._idTT != value))
-				{
-					this.OnidTTChanging(value);
-					this.SendPropertyChanging();
-					this._idTT = value;
-					this.SendPropertyChanged("idTT");
-					this.OnidTTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idLoai", DbType="Int")]
-		public System.Nullable<int> idLoai
-		{
-			get
-			{
-				return this._idLoai;
-			}
-			set
-			{
-				if ((this._idLoai != value))
-				{
-					if (this._TheLoaiTin.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnidLoaiChanging(value);
-					this.SendPropertyChanging();
-					this._idLoai = value;
-					this.SendPropertyChanged("idLoai");
-					this.OnidLoaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuDe", DbType="NVarChar(100)")]
-		public string TieuDe
-		{
-			get
-			{
-				return this._TieuDe;
-			}
-			set
-			{
-				if ((this._TieuDe != value))
-				{
-					this.OnTieuDeChanging(value);
-					this.SendPropertyChanging();
-					this._TieuDe = value;
-					this.SendPropertyChanged("TieuDe");
-					this.OnTieuDeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(MAX)")]
-		public string NoiDung
-		{
-			get
-			{
-				return this._NoiDung;
-			}
-			set
-			{
-				if ((this._NoiDung != value))
-				{
-					this.OnNoiDungChanging(value);
-					this.SendPropertyChanging();
-					this._NoiDung = value;
-					this.SendPropertyChanged("NoiDung");
-					this.OnNoiDungChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TheLoaiTin_TinTuc", Storage="_TheLoaiTin", ThisKey="idLoai", OtherKey="idLoai", IsForeignKey=true)]
-		public TheLoaiTin TheLoaiTin
-		{
-			get
-			{
-				return this._TheLoaiTin.Entity;
-			}
-			set
-			{
-				TheLoaiTin previousValue = this._TheLoaiTin.Entity;
-				if (((previousValue != value) 
-							|| (this._TheLoaiTin.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TheLoaiTin.Entity = null;
-						previousValue.TinTucs.Remove(this);
-					}
-					this._TheLoaiTin.Entity = value;
-					if ((value != null))
-					{
-						value.TinTucs.Add(this);
-						this._idLoai = value.idLoai;
-					}
-					else
-					{
-						this._idLoai = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("TheLoaiTin");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LienHe")]
 	public partial class LienHe : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2190,6 +1901,319 @@ namespace Nhom2_WebsiteBanXe.Models
 					this._NoiDung = value;
 					this.SendPropertyChanged("NoiDung");
 					this.OnNoiDungChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TheLoaiTin")]
+	public partial class TheLoaiTin : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idLoai;
+		
+		private string _TenLoai;
+		
+		private EntitySet<TinTuc> _TinTucs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidLoaiChanging(int value);
+    partial void OnidLoaiChanged();
+    partial void OnTenLoaiChanging(string value);
+    partial void OnTenLoaiChanged();
+    #endregion
+		
+		public TheLoaiTin()
+		{
+			this._TinTucs = new EntitySet<TinTuc>(new Action<TinTuc>(this.attach_TinTucs), new Action<TinTuc>(this.detach_TinTucs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idLoai", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idLoai
+		{
+			get
+			{
+				return this._idLoai;
+			}
+			set
+			{
+				if ((this._idLoai != value))
+				{
+					this.OnidLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._idLoai = value;
+					this.SendPropertyChanged("idLoai");
+					this.OnidLoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLoai", DbType="NVarChar(50)")]
+		public string TenLoai
+		{
+			get
+			{
+				return this._TenLoai;
+			}
+			set
+			{
+				if ((this._TenLoai != value))
+				{
+					this.OnTenLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._TenLoai = value;
+					this.SendPropertyChanged("TenLoai");
+					this.OnTenLoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TheLoaiTin_TinTuc", Storage="_TinTucs", ThisKey="idLoai", OtherKey="idLoai")]
+		public EntitySet<TinTuc> TinTucs
+		{
+			get
+			{
+				return this._TinTucs;
+			}
+			set
+			{
+				this._TinTucs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TinTucs(TinTuc entity)
+		{
+			this.SendPropertyChanging();
+			entity.TheLoaiTin = this;
+		}
+		
+		private void detach_TinTucs(TinTuc entity)
+		{
+			this.SendPropertyChanging();
+			entity.TheLoaiTin = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TinTuc")]
+	public partial class TinTuc : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _idTT;
+		
+		private System.Nullable<int> _idLoai;
+		
+		private string _TieuDe;
+		
+		private string _NoiDung;
+		
+		private string _Anhbia;
+		
+		private EntityRef<TheLoaiTin> _TheLoaiTin;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidTTChanging(int value);
+    partial void OnidTTChanged();
+    partial void OnidLoaiChanging(System.Nullable<int> value);
+    partial void OnidLoaiChanged();
+    partial void OnTieuDeChanging(string value);
+    partial void OnTieuDeChanged();
+    partial void OnNoiDungChanging(string value);
+    partial void OnNoiDungChanged();
+    partial void OnAnhbiaChanging(string value);
+    partial void OnAnhbiaChanged();
+    #endregion
+		
+		public TinTuc()
+		{
+			this._TheLoaiTin = default(EntityRef<TheLoaiTin>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int idTT
+		{
+			get
+			{
+				return this._idTT;
+			}
+			set
+			{
+				if ((this._idTT != value))
+				{
+					this.OnidTTChanging(value);
+					this.SendPropertyChanging();
+					this._idTT = value;
+					this.SendPropertyChanged("idTT");
+					this.OnidTTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idLoai", DbType="Int")]
+		public System.Nullable<int> idLoai
+		{
+			get
+			{
+				return this._idLoai;
+			}
+			set
+			{
+				if ((this._idLoai != value))
+				{
+					if (this._TheLoaiTin.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidLoaiChanging(value);
+					this.SendPropertyChanging();
+					this._idLoai = value;
+					this.SendPropertyChanged("idLoai");
+					this.OnidLoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TieuDe", DbType="NVarChar(100)")]
+		public string TieuDe
+		{
+			get
+			{
+				return this._TieuDe;
+			}
+			set
+			{
+				if ((this._TieuDe != value))
+				{
+					this.OnTieuDeChanging(value);
+					this.SendPropertyChanging();
+					this._TieuDe = value;
+					this.SendPropertyChanged("TieuDe");
+					this.OnTieuDeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(MAX)")]
+		public string NoiDung
+		{
+			get
+			{
+				return this._NoiDung;
+			}
+			set
+			{
+				if ((this._NoiDung != value))
+				{
+					this.OnNoiDungChanging(value);
+					this.SendPropertyChanging();
+					this._NoiDung = value;
+					this.SendPropertyChanged("NoiDung");
+					this.OnNoiDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anhbia", DbType="VarChar(50)")]
+		public string Anhbia
+		{
+			get
+			{
+				return this._Anhbia;
+			}
+			set
+			{
+				if ((this._Anhbia != value))
+				{
+					this.OnAnhbiaChanging(value);
+					this.SendPropertyChanging();
+					this._Anhbia = value;
+					this.SendPropertyChanged("Anhbia");
+					this.OnAnhbiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TheLoaiTin_TinTuc", Storage="_TheLoaiTin", ThisKey="idLoai", OtherKey="idLoai", IsForeignKey=true)]
+		public TheLoaiTin TheLoaiTin
+		{
+			get
+			{
+				return this._TheLoaiTin.Entity;
+			}
+			set
+			{
+				TheLoaiTin previousValue = this._TheLoaiTin.Entity;
+				if (((previousValue != value) 
+							|| (this._TheLoaiTin.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TheLoaiTin.Entity = null;
+						previousValue.TinTucs.Remove(this);
+					}
+					this._TheLoaiTin.Entity = value;
+					if ((value != null))
+					{
+						value.TinTucs.Add(this);
+						this._idLoai = value.idLoai;
+					}
+					else
+					{
+						this._idLoai = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("TheLoaiTin");
 				}
 			}
 		}

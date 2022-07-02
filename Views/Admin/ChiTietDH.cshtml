@@ -1,0 +1,98 @@
+﻿@model Nhom2_WebsiteBanXe.Models.ChiTietOrder
+
+@{
+    ViewBag.Title = "ChiTietDH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">CHI TIẾT ĐƠN HÀNG</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã Order:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaOrder)
+        </dd>
+
+        <dt>
+            Mã xe:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idXe)
+        </dd>
+
+        <dt>
+            Tên xe:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Xe.TenXe)
+        </dd>
+
+        <dt>
+            Ảnh bìa:
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/HinhSP/"+ Model.Xe.Anhbia)" />
+        </dd>
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            Đơn giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            Ngày tạo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.NgayTao)
+        </dd>
+
+        <dt>
+            Ngày giao:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.NgayGiao)
+        </dd>
+
+        <dt>
+            Tình trạng thanh toán:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.TinhTrangThanhToan)
+        </dd>
+
+        <dt>
+            Tình trạng giao hàng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.TinhTrangGH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "SuaDH", new { id = Model.MaOrder }) |
+    @Html.ActionLink("TRỞ VỀ DANH SÁCH", "DonHang")
+</p>

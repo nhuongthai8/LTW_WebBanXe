@@ -22,9 +22,34 @@ namespace Nhom2_WebsiteBanXe.Controllers
             int pageSize = 9; //số xe mới cập nhật hiện lên trang index
             int pageNum = (page ?? 1); //tạo biến số trang
 
-            var xemoi = Layxemoi(12); //tổng số xe hiện lên trong phần chia trang
+            var xemoi = Layxemoi(18); //tổng số xe hiện lên trong phần chia trang
             return View(xemoi.ToPagedList(pageNum, pageSize));
         }
+
+        //tin tức
+        public ActionResult IndexTinTuc()
+        {
+            var tt = (from t in data.TinTucs select t).ToList();
+            return View(tt);
+        }
+        public ActionResult ChiTietTT(int id)
+        {
+            var tt = from t in data.TinTucs where t.idTT == id select t;
+            return View(tt.Single());
+        }
+        //truyền các thể loại tin lên trang index tin tức
+        public ActionResult Theloaitin()
+        {
+            var theloaitin = from tt in data.TheLoaiTins select tt;
+            return PartialView(theloaitin);
+        }
+        //Lấy theo loại tin tức
+        public ActionResult TinTheoLoai(int id)
+        {
+            var tin = from tt in data.TinTucs where tt.idLoai == id select tt;
+            return View(tin);
+        }
+        //----------------------------------------------------------//
 
         //lấy tất cả xe trong table       
         public ActionResult Sanpham(int? page)
@@ -37,8 +62,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
         }
         //
 
-
-
+        
         //truyền các loại xe lên trang index
         public ActionResult Cacloaixe()
         {
@@ -52,6 +76,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
             return PartialView(hangxe);
         }
 
+        
         //Lấy xe theo loại
         public ActionResult SpTheoLoai(int id)
         {

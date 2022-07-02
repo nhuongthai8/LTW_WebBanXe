@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Nhom2_WebsiteBanXe.Models.TinTuc>
+
+@{
+    ViewBag.Title = "TinTheoLoai";
+    Layout = "~/Views/Shared/_LayoutTinTuc.cshtml";
+}
+
+<h2 style="text-align:center">TIN THEO THỂ LOẠI</h2>
+@foreach (var tt in Model)
+{
+    <div class="col-sm-3 col-lg-6 col-md-3">
+        <div class="thumbnail">
+            <a href="@Url.Action("ChiTietTT","CarStore",new { id = tt.idTT})">
+                <img alt="@tt.TieuDe" src="~/HinhTT/@tt.Anhbia" style="width:200px" />
+                <div>
+                    <br />
+                    <h4 style="text-align:center">
+                        @tt.TieuDe
+                    </h4>
+                    <p></p>
+                </div>
+            </a>
+        </div>
+    </div>
+}
+

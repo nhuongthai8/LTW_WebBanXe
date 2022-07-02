@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Nhom2_WebsiteBanXe.Models.TheLoaiTin>
+<div class="list-group">
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("TinTheoLoai","CarStore",new { id = item.idLoai})" class="list-group-item">
+            @item.TenLoai
+        </a>
+    }
+</div>
+
+
