@@ -236,7 +236,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
                 data.SubmitChanges();
                 return RedirectToAction("LoaiXe");
             }
-            return this.EditXe(id);
+            return this.SuaLX(id);
         }
         //xóa
         [HttpGet]
@@ -250,7 +250,7 @@ namespace Nhom2_WebsiteBanXe.Controllers
         public ActionResult ConfirmXoaLX(int id)
         {
             LoaiXe lx = data.LoaiXes.SingleOrDefault(a => a.idLoaiXe == id);
-            ViewBag.idLoaiXe = lx.idLoaiXe;
+            ViewBag.idLoaiXe = lx.idLoaiXe; //viewbag dùng để chuyển kiểu dữ liệu như viewdata
             if (lx == null)
             {
                 Response.StatusCode = 404;

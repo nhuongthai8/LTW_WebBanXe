@@ -12,6 +12,8 @@ namespace Nhom2_WebsiteBanXe.Controllers
     {
         DataClasses1DataContext data = new DataClasses1DataContext();
 
+
+
         private List<Xe> Layxemoi(int count)
         {
             //sắp xếp xe cập nhật theo ngay(Ngaynhap) top 6

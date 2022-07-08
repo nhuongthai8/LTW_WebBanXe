@@ -13,22 +13,28 @@
 <table class="table"  style="text-indent: 300px">
     <tr>
         <th>
+            Mã loại xe
+        </th>
+        <th>
             Tên loại xe
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenLoai)
-        </td>
-        <td>
-            @Html.ActionLink("Sửa", "SuaLX", new { id = item.idLoaiXe }) |
-            @Html.ActionLink("Chi tiết", "ChiTietLX", new { id = item.idLoaiXe }) |
-            @Html.ActionLink("Xóa", "XoaLX", new { id = item.idLoaiXe })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.idLoaiXe)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenLoai)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "SuaLX", new { id = item.idLoaiXe }) |
+        @Html.ActionLink("Chi tiết", "ChiTietLX", new { id = item.idLoaiXe }) |
+        @Html.ActionLink("Xóa", "XoaLX", new { id = item.idLoaiXe })
+    </td>
+</tr>
 }
 
 </table>

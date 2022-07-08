@@ -21,23 +21,24 @@
                     </div>
                 </a>
                 <div class="ratings">
-                    <p class="pull-right">
-                        <div id="Datmua">
-                            <a href="@Url.Action("AddToCard","ShoppingCard", new { id = hx.idXe})" class="list-group-item">
-                                ĐẶT HÀNG
-                            </a>
-                        </div>
-                    </p>
-                    <p style="color: orange">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </p>
-                    <p>
-                        <span class="glyphicon glyphicon-tag" style="text-indent: 5px"></span> @hx.GiaTien VNĐ
-                    </p>
+                    <div class="pull-right">
+                        <p>
+                            <span class="glyphicon glyphicon-heart" style="color: red"></span> @hx.TinhTrangXe
+                        </p>
+                        <p>
+                            <span class="glyphicon glyphicon-folder-close" style="color: orange"></span> @hx.SoLuongTon
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <span class="glyphicon glyphicon-tag" style="text-indent: 5px; color: red"></span> @String.Format("{0:0,0}", @hx.GiaTien) @*@hx.GiaTien*@ VNĐ
+                        </p>
+                        <p>
+                            <span class="glyphicon glyphicon-calendar" style="text-indent: 5px; color: orange"></span> @hx.NamSanXuat
+                        </p>
+                    </div>
+
+                    
                 </div>
             </div>
         </div>

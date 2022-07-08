@@ -1,11 +1,14 @@
 ﻿@model PagedList.PagedList<Xe>
 @using PagedList.Mvc;
 @using Nhom2_WebsiteBanXe.Models
+
+@*@model IEnumerable<Nhom2_WebsiteBanXe.Models.Xe>*@
+
 @{
     ViewBag.Title = "Trang Chủ";
     Layout = "~/Views/Shared/_LayoutTrangChuNew.cshtml";
 }
-<h2 style="text-align:center">NEW CARS</h2>
+<h2 style="text-align:center">XE MỚI CÂP NHẬT</h2>
 @foreach (var xe in Model)
 {
     <div class="col-sm-4 col-lg-4 col-md-4">
@@ -32,7 +35,7 @@
                 </div>
                 <div>
                     <p>
-                        <span class="glyphicon glyphicon-tag" style="text-indent: 5px; color: red"></span> @xe.GiaTien VNĐ
+                        <span class="glyphicon glyphicon-tag" style="text-indent: 5px; color: red"></span> @String.Format("{0:0,0}", @xe.GiaTien) VNĐ
                     </p>
                     <p>
                         <span class="glyphicon glyphicon-calendar" style="text-indent: 5px; color: orange"></span> @xe.NamSanXuat
